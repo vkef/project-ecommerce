@@ -35,6 +35,10 @@ Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function 
     return view('user.index');
 })->name('dashboard');
 
-
+//User Route
 Route::get('/user/logout',[MainUserController::class, 'Logout'])->name('user.logout');
+Route::get('/user/profile',[MainUserController::class, 'UserProfile'])->name('user.profile');
+Route::get('/user/profile/edit',[MainUserController::class, 'UserProfileEdit'])->name('profile.edit');
+
+
 Route::get('/admin/logout',[AdminController::class, 'destroy'])->name('admin.logout');
