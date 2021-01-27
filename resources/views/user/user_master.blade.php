@@ -5,22 +5,28 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
         <meta name="author" content="">
-        <link rel="icon" href="panel/assets/images/favicon.png" >
+        <link rel="icon" href="userbackend/panel/assets/images/favicon.png" >
         <!--Page title-->
-        <title>Admin easy Learning</title>
+        <title>User Dashboard</title>
         <!--bootstrap--> 
         <link rel="stylesheet" href="{{asset('userbackend/panel/assets/css/bootstrap.min.css')}}">
         <!--font awesome-->
         <link rel="stylesheet" href="{{asset('userbackend/panel/assets/css/all.min.css')}}">
         <!-- metis menu -->
-        <link rel="stylesheet" href="{{asset('userbackend/panel/a ssets/plugins/metismenu-3.0.4/assets/css/metisMenu.min.css')}}">
+        <link rel="stylesheet" href="{{asset('userbackend/panel/assets/plugins/metismenu-3.0.4/assets/css/metisMenu.min.css')}}">
         <link rel="stylesheet" href="{{asset('userbackend/panel/assets/plugins/metismenu-3.0.4/assets/css/mm-vertical-hover.css')}}">
         <!-- chart -->
    
         <!-- <link rel="stylesheet" href="assets/plugins/chartjs-bar-chart/chart.css"> -->
+
         <!--Custom CSS-->
         <link rel="stylesheet" href="{{asset('userbackend/panel/assets/css/style.css')}}">
+
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+
     </head>
+
+
     <body id="page-top">
         <!-- preloader -->
         <div class="preloader">
@@ -440,7 +446,31 @@
         <!-- Main js -->
         <script src="{{asset('userbackend/panel/assets/js/main.js ')}}"></script>
 
-    
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+        <script>
+        @if(Session::has('message'))
+        var type = "{{ Session::get('alert-type','info') }}"
+        switch(type){
+            case 'info':
+            toastr.info("{{ Session::get('message') }}");
+            break;
+
+            case 'success':
+            toastr.success("{{ Session::get('message') }}");
+            break;
+
+            case 'warning':
+            toastr.warning("{{ Session::get('message') }}");
+            break;
+
+            case 'error':
+            toastr.error("{{ Session::get('message') }}");
+            break;
+        }
+        @endif
+        </script>
+            
      
     </body>
 </html>
