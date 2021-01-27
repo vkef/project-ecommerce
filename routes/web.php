@@ -40,6 +40,9 @@ Route::get('/user/logout',[MainUserController::class, 'Logout'])->name('user.log
 Route::get('/user/profile',[MainUserController::class, 'UserProfile'])->name('user.profile');
 Route::get('/user/profile/edit',[MainUserController::class, 'UserProfileEdit'])->name('profile.edit');
 Route::post('/user/profile/store',[MainUserController::class, 'UserProfileStore'])->name('profile.store');
+Route::get('/user/password/view',[MainUserController::class, 'UserPasswordView'])->name('user.password.view');
+Route::post('/user/password/update',[MainUserController::class, 'UserPasswordUpdate'])->name('password.update');
+
 
 
 Route::get('/admin/logout',[AdminController::class, 'destroy'])->name('admin.logout');

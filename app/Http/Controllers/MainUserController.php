@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Auth;
 use App\Models\User;
 
@@ -50,6 +51,33 @@ class MainUserController extends Controller
         return redirect()->route('user.profile')->with($notification);
 
     }
-    
-    
+
+    public function UserPasswordView(){
+
+        return view('user.password.edit_password');
+    }
+
+    public function UserPasswordUpdate(Request $request){
+
+        $validateData = $request->validate([
+            'oldpassword' => 'required',
+            'password' => 'required|confirmed'
+
+        ]);
+        $hashedPassword = Auth::user()->password;
+        if (Hash::check($request->oldpassword,$hashedPassword)){
+
+            $user = User::find(Auth::id());
+            $user->password = Hash::make($request->password);
+            $user->save();
+            Auth::logout();
+            return redirect()->route('login');
+        }else{
+            return redirect()->back();
+        }
+
+        return view('user.password.edit_password');
+    }
+
+
 }
