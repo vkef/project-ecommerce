@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MainUserController;
+use App\Http\Controllers\MainAdminController;
 
 
 /*
@@ -35,6 +36,9 @@ Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function 
     return view('user.index');
 })->name('dashboard');
 
+Route::get('/admin/logout',[AdminController::class, 'destroy'])->name('admin.logout');
+
+
 //User Route
 Route::get('/user/logout',[MainUserController::class, 'Logout'])->name('user.logout');
 Route::get('/user/profile',[MainUserController::class, 'UserProfile'])->name('user.profile');
@@ -44,5 +48,7 @@ Route::get('/user/password/view',[MainUserController::class, 'UserPasswordView']
 Route::post('/user/password/update',[MainUserController::class, 'UserPasswordUpdate'])->name('password.update');
 
 
-
-Route::get('/admin/logout',[AdminController::class, 'destroy'])->name('admin.logout');
+//Admin Route
+Route::get('/admin/profile',[MainAdminController::class, 'AdminProfile'])->name('admin.profile');
+Route::get('/admin/profile/edit',[MainAdminController::class, 'AdminProfileEdit'])->name('admin.profile.edit');
+Route::post('/admin/profile/store',[MainAdminController::class, 'AdminProfileStore'])->name('admin.profile.store');
