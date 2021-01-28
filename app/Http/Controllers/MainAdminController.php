@@ -46,4 +46,33 @@ class MainAdminController extends Controller
 
     }
 
+    public function AdminPasswordChange(){
+
+        $editData = Admin::find(1);
+        return view('admin.password.view_password',compact('editData'));
+ 
+     }
+
+     public function AdminPasswordUpdate(Request $request){
+
+        $validateData = $request->validate([
+            'oldpassword' => 'required',
+            'password' => 'required|confirmed'
+
+        ]);
+        $hashedPassword = Admin::find(1)->password;
+        if (Hash::check($request->oldpassword,$hashedPassword)){
+
+            $admin = Admin::find(1);
+            $admin->password = Hash::make($request->password);
+            $admin->save();
+            Auth::logout();
+            return redirect()->route('admin.logout');
+        }else{
+            return redirect()->back();
+        }
+
+        return view('admin.password.view_password');
+     }
+
 }

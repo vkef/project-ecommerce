@@ -52,3 +52,5 @@ Route::post('/user/password/update',[MainUserController::class, 'UserPasswordUpd
 Route::get('/admin/profile',[MainAdminController::class, 'AdminProfile'])->name('admin.profile');
 Route::get('/admin/profile/edit',[MainAdminController::class, 'AdminProfileEdit'])->name('admin.profile.edit');
 Route::post('/admin/profile/store',[MainAdminController::class, 'AdminProfileStore'])->name('admin.profile.store');
+Route::get('/admin/password/view',[MainAdminController::class, 'AdminPasswordChange'])->name('admin.password.view');
+Route::post('/admin/password/update',[MainAdminController::class, 'AdminPasswordUpdate'])->name('admin.password.update');
