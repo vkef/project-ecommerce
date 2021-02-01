@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MainUserController;
 use App\Http\Controllers\MainAdminController;
+use App\Http\Controllers\CategoryController;
+
 
 
 /*
@@ -29,7 +31,7 @@ Route::group(['prefix'=>'admin','middleware'=>['admin:admin']],function(){
 
 Route::middleware(['auth:sanctum,admin', 'verified'])->get('/admin/dashboard', function () {
     return view('admin.index');
-})->name('dashboard');
+})->name('admin.dashboard');
 
 //User Dash
 Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function () {
@@ -54,3 +56,7 @@ Route::get('/admin/profile/edit',[MainAdminController::class, 'AdminProfileEdit'
 Route::post('/admin/profile/store',[MainAdminController::class, 'AdminProfileStore'])->name('admin.profile.store');
 Route::get('/admin/password/view',[MainAdminController::class, 'AdminPasswordChange'])->name('admin.password.view');
 Route::post('/admin/password/update',[MainAdminController::class, 'AdminPasswordUpdate'])->name('admin.password.update');
+//Admin Category
+Route::get('/admin/categories',[CategoryController::class, 'Category'])->name('admin.category');
+Route::post('/admin/categories/store',[CategoryController::class, 'StoreCategory'])->name('store.category');
+
