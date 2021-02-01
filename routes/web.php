@@ -18,7 +18,7 @@ use App\Http\Controllers\MainAdminController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layouts.app');
 });
 
 Route::group(['prefix'=>'admin','middleware'=>['admin:admin']],function(){
