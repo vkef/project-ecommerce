@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MainUserController;
 use App\Http\Controllers\MainAdminController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\BrandController;
 
 
 
@@ -62,3 +63,6 @@ Route::post('/admin/categories/store',[CategoryController::class, 'StoreCategory
 Route::get('/admin/categories/delete/{id}',[CategoryController::class, 'DelCategory']);
 Route::get('/admin/categories/edit/{id}',[CategoryController::class, 'EditCategory']);
 Route::post('/admin/categories/update/{id}',[CategoryController::class, 'UpdateCategory'])->name('update.category');
+//Admin Brands
+Route::get('/admin/categories/brands',[BrandController::class, 'Brand'])->name('admin.brands');
+Route::post('/admin/categories/brands/store',[BrandController::class, 'StoreBrand'])->name('store.brand');

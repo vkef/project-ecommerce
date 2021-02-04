@@ -9,6 +9,13 @@ use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
+    
+    public function __construct(){
+
+        $this->middleware('auth:admin');
+
+    }
+
     public function Category(){
 
         $category = Category::all();
