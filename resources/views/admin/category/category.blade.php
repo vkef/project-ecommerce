@@ -33,8 +33,8 @@
                 <td>{{$key +1}}</td>
                 <td>{{$row->category}}</td>
                 <td>
-                    <a href="" class="btn btn-sm btn-info">Edit</a>
-                    <a href="" class="btn btn-sm btn-danger" id="delete">Delete</a>
+                    <a href="{{url('admin/categories/edit/' .$row->id)}}" class="btn btn-sm btn-info">Edit</a>
+                    <a href="{{url('admin/categories/delete/' .$row->id)}}" class="btn btn-sm btn-dark" id="delete">Delete</a>
 
                 </td>
               </tr>

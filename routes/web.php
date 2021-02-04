@@ -59,4 +59,6 @@ Route::post('/admin/password/update',[MainAdminController::class, 'AdminPassword
 //Admin Category
 Route::get('/admin/categories',[CategoryController::class, 'Category'])->name('admin.category');
 Route::post('/admin/categories/store',[CategoryController::class, 'StoreCategory'])->name('store.category');
-
+Route::get('/admin/categories/delete/{id}',[CategoryController::class, 'DelCategory']);
+Route::get('/admin/categories/edit/{id}',[CategoryController::class, 'EditCategory']);
+Route::post('/admin/categories/update/{id}',[CategoryController::class, 'UpdateCategory'])->name('update.category');
