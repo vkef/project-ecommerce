@@ -67,3 +67,5 @@ Route::post('/admin/categories/update/{id}',[CategoryController::class, 'UpdateC
 Route::get('/admin/categories/brands',[BrandController::class, 'Brand'])->name('admin.brands');
 Route::post('/admin/categories/brands/store',[BrandController::class, 'StoreBrand'])->name('store.brand');
 Route::get('/admin/categories/brands/delete/{id}',[BrandController::class, 'DeleteBrand'])->name('delete.brand');
+Route::get('/admin/categories/brands/edit/{id}',[BrandController::class, 'EditBrand'])->name('edit.brand');
+Route::post('/admin/categories/brands/update/{id}',[BrandController::class, 'UpdateBrand'])->name('update.brand');

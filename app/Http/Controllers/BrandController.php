@@ -79,5 +79,64 @@ class BrandController extends Controller
 
     }
 
+    public function EditBrand($id){
 
+        $brands=Brand::find($id);
+        return view('admin.category.edit_brand',compact('brands'));
+
+    }
+
+    public function UpdateBrand(Request $request, $id){ 
+
+        $validateData = $request->validate([
+
+            'brand_name' => 'unique:brands|max:55'
+
+        ]);
+
+            $old_image=$request->old_image;
+
+            $image = $request->file('brand_image');
+        
+        if($image){
+
+            unlink($old_image);
+            $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+            Image::make($image)->save('upload/brand/'.$name_gen);
+            $last_img = 'upload/brand/'.$name_gen;
+
+            Brand::find($id)->update([
+                'brand_name' => $request->brand_name,
+                'brand_image' => $last_img,
+                'created_at' => Carbon::now()
+            ]);
+        
+            $notification = array(
+
+                'message'=> 'Brand Updated Successfully',
+                'alert-type'=> 'success'
+    
+            );
+    
+            return Redirect()->route('admin.brands')->with($notification);
+        }
+        else{
+
+            Brand::find($id)->update([
+                'brand_name' => $request->brand_name,
+                'created_at' => Carbon::now()
+            ]);
+
+            $notification = array(
+
+                'message'=> 'Brand Image Name Updated Successfully',
+                'alert-type'=> 'success'
+    
+            );
+    
+    
+            return Redirect()->route('admin.brands')->with($notification);
+        }
+
+    }
 }
