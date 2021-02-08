@@ -36,7 +36,7 @@
                 <td><img src="{{ url($row -> brand_image) }}" height="70px;" width="80px;"></td>
                 <td>
                     <a href="{{url('admin/categories/edit/' .$row->id)}}" class="btn btn-sm btn-info">Edit</a>
-                    <a href="{{url('admin/categories/delete/' .$row->id)}}" class="btn btn-sm btn-dark" id="delete">Delete</a>
+                    <a href="{{url('admin/categories/brands/delete/' .$row->id)}}" class="btn btn-sm btn-dark" id="delete">Delete</a>
 
                 </td>
               </tr>
