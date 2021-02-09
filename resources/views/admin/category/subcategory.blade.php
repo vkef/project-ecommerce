@@ -10,11 +10,11 @@
 
     <div class="sl-pagebody">
       <div class="sl-page-title">
-        <h5>Sub-Category Table</h5>
+        <h5>Sub Category Table</h5>
       </div><!-- sl-page-title -->
 
       <div class="card pd-20 pd-sm-40">
-        <h6 class="card-body-title">SubCategory List
+        <h6 class="card-body-title">Sub Category List
         <a href="" class="btn btn-sm btn-info" style="float:right;"  data-toggle="modal" data-target="#modal1">Add New</a>
     </h6>
 
@@ -23,7 +23,7 @@
             <thead>
               <tr>
                 <th class="wd-5p">ID</th>
-                <th class="wd-15p">SubCategory name</th>
+                <th class="wd-15p">Sub Category name</th>
                 <th class="wd-15p">Category name</th>
                 <th class="wd-20p">Action</th>
               </tr>
@@ -33,10 +33,10 @@
               <tr>
                 <td>{{$key +1}}</td>
                 <td>{{$row->subcategory_name}}</td>
-                <td>{{$row->category_name}}</td>
+                <td>{{$row->category}}</td>
                 <td>
-                    <a href="{{url('admin/categories/edit/' .$row->id)}}" class="btn btn-sm btn-info">Edit</a>
-                    <a href="{{url('admin/categories/delete/' .$row->id)}}" class="btn btn-sm btn-dark" id="delete">Delete</a>
+                    <a href="{{url('admin/categories/subcategory/edit/' .$row->id)}}" class="btn btn-sm btn-info">Edit</a>
+                    <a href="{{url('admin/categories/subcategory/delete/' .$row->id)}}" class="btn btn-sm btn-dark" id="delete">Delete</a>
 
                 </td>
               </tr>
@@ -82,7 +82,7 @@
                     <select class="form-control" name="category_id">
 
                         @foreach($category as $row)
-                        <option value="$row->id">{{$row->category}}</option>
+                        <option value="{{$row->id}}">{{$row->category}}</option>
                         @endforeach
 
                     </select>
