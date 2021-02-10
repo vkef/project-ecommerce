@@ -7,6 +7,7 @@ use App\Http\Controllers\MainAdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\SubCategoryController;
+use App\Http\Controllers\CouponController;
 
 /*
 |--------------------------------------------------------------------------
@@ -75,3 +76,10 @@ Route::post('/admin/categories/subcategory/store',[SubCategoryController::class,
 Route::get('/admin/categories/subcategory/delete/{id}',[SubCategoryController::class, 'DeleteSubcat']);
 Route::get('/admin/categories/subcategory/edit/{id}',[SubCategoryController::class, 'EditSubcat']);
 Route::post('/admin/categories/subcategory/update/{id}',[SubCategoryController::class, 'UpdateSubcat']);
+
+//Admin Coupon
+Route::get('/admin/categories/coupon',[CouponController::class, 'Coupon'])->name('admin.coupon');
+Route::post('/admin/categories/coupon/store',[CouponController::class, 'CouponStore'])->name('store.coupon');
+Route::get('/admin/categories/coupon/delete/{id}',[CouponController::class, 'CouponDelete']);
+Route::get('/admin/categories/coupon/edit/{id}',[CouponController::class, 'CouponEdit']);
+Route::post('/admin/categories/coupon/update/{id}',[CouponController::class, 'CouponUpdate']);
